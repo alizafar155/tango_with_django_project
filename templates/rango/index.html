@@ -6,8 +6,14 @@
 {% endblock %}
 
 {% block body_block %}
-    hey there partner! <br/>
+    {% if user.is_authenticated %}
+        howdy {{ user.username }}!
+    {% else %}
+        hey there partner!
+    {% endif %}
+    <div>
     <strong>{{ boldmessage }}</strong><br />
+    </div>
     <div>
         {% if categories %}
             <h2>Most Liked Categories</h2>
