@@ -22,8 +22,9 @@ def index(request):
 
 # About view
 def about(request):
-    context_dict = {}
-    return render(request, 'rango/about.html', context=context_dict)
+    print(request.method)
+    print(request.user)
+    return render(request, 'rango/about.html', {})
 
 
 # Show category view
@@ -41,6 +42,7 @@ def show_category(request, category_name_slug):
     
     return render(request, 'rango/category.html', context=context_dict)
 
+
 # Add category view
 def add_category(request):
     form = CategoryForm()
@@ -55,6 +57,8 @@ def add_category(request):
     
     return render(request, 'rango/add_category.html', {'form': form})
 
+
+# Add page view
 def add_page(request, category_name_slug):
     try:
         category = Category.objects.get(slug=category_name_slug)
